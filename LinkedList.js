@@ -38,7 +38,7 @@ class LinkedList {
             this.current = this.current.nextNode;
         }
 
-        linkedListString += `( ${this.current.value} ) -> ( ${this.current.nextNode} )`;
+        linkedListString += `( ${this.current.value} ) -> ${this.current.nextNode}`;
 
         // console.log(`${this.current.value}-->${this.current.nextNode}`);
         console.log(`Num nodes: ${this.length}`);
