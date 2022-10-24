@@ -73,16 +73,13 @@ class LinkedList {
     }
 
     contains(value) {
-        let current = this.head;
-        
         // traverse list until tail node is reached
-        while(current !== null) {
-            if (current.value == value) {
+        for (const node of this) {
+            if (node !== null && node.value == value) {
                 return true;
             }
-            current = current.nextNode;
         }
-        
+
         return false;
     }
 
@@ -119,7 +116,8 @@ myList.append('DouDou');
 myList.append('Mean Cat');
 myList.prepend('John');
 myList.append('LastNode')
-console.log(myList.at(3));
+// console.log(myList.at(3));
+console.log(myList.contains('Mean Cat'));
 // console.log(myList.pop());
 myList.toString();
 // console.log(myList.size);
