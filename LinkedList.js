@@ -11,6 +11,7 @@ class LinkedList {
         if (this.head == null) {
             const firstNode = NodeFactory(value);
             this.head = firstNode;
+            this.size++;
             return;
         }
 
@@ -23,6 +24,7 @@ class LinkedList {
 
         if (current.nextNode == null) {
             current.nextNode = NodeFactory(value);
+            this.size++;
         }
     }
 
