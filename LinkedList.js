@@ -17,23 +17,26 @@ class LinkedList {
 
         let current = this.head;
         
-        // traverse linked list until next node pointer is null
+        // traverse list until tail node is reached
         while(current.nextNode !== null) {
             current = current.nextNode;
         }
 
+        // add new node to tail node
         if (current.nextNode == null) {
             current.nextNode = NodeFactory(value);
             this.size++;
         }
     }
 
+    // add new node to start of life
     prepend(value) {
         const newNode = NodeFactory(value, this.head);
         this.head = newNode;
         this.size++;
     }
 
+    // string representation of linked list
     toString() {
         let current = this.head;
         let linkedListString = '';
