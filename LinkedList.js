@@ -41,7 +41,7 @@ class LinkedList {
             current = current.nextNode;
         }
 
-        linkedListString += `${current.nextNode}`;
+        linkedListString += `( ${current.value} ) -> ${current.nextNode}`;
         
         console.log(linkedListString);
     }
