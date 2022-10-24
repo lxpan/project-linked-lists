@@ -10,7 +10,6 @@ class LinkedList {
         if (this.head == null) {
             const newNode = NodeFactory(value);
             this.head = newNode;
-            this.size++;
         }
 
         let current = this.head;
