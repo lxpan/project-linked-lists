@@ -3,6 +3,7 @@ import NodeFactory from './Node.js';
 class LinkedList {
     constructor() {
         this.head = null; // this should be a pointer to the first node.
+        this.tail = null;
         this.size = 0;
     }
 
@@ -11,6 +12,7 @@ class LinkedList {
         if (this.head == null) {
             const firstNode = NodeFactory(value);
             this.head = firstNode;
+            this.tail = firstNode;
             this.size++;
             return;
         }
@@ -24,7 +26,9 @@ class LinkedList {
 
         // add new node to tail node
         if (current.nextNode == null) {
-            current.nextNode = NodeFactory(value);
+            const newNode = NodeFactory(value);
+            current.nextNode = newNode;
+            this.tail = current.nextNode;
             this.size++;
         }
     }
@@ -60,3 +64,5 @@ myList.append('Mean Cat');
 myList.append('LastNode')
 myList.toString();
 console.log(myList.size);
+console.log(myList.head);
+console.log(myList.tail);
