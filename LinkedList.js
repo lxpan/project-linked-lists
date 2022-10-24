@@ -66,6 +66,20 @@ class LinkedList {
         return lastNode;
     }
 
+    contains(value) {
+        let current = this.head;
+        
+        // traverse list until tail node is reached
+        while(current !== null) {
+            if (current.value == value) {
+                return true;
+            }
+            current = current.nextNode;
+        }
+        
+        return false;
+    }
+
     // string representation of linked list
     toString() {
         let current = this.head;
@@ -90,8 +104,9 @@ myList.prepend('John');
 myList.append('LastNode')
 // myList.toString();
 // console.log(myList.at(2));
-console.log(myList.pop());
+// console.log(myList.pop());
 myList.toString();
+console.log(myList.contains(111));
 // console.log(myList.size);
 // console.log(myList.head);
 // console.log(myList.tail);
