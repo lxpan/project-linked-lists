@@ -26,17 +26,23 @@ class LinkedList {
         this.length++;
     }
 
-    printList() {
+    toString() {
         this.current = this.head;
+        let linkedListString = '';
+
         console.log(this.current);
 
         while(this.current.nextNode !== null) {
-            console.log(`${this.current.value}-->${this.current.nextNode.value}`);
+            linkedListString += `( ${this.current.value} ) -> `;
+            // console.log(`${this.current.value}-->${this.current.nextNode.value}`);
             this.current = this.current.nextNode;
         }
 
-        console.log(`${this.current.value}-->${this.current.nextNode}`);
+        linkedListString += `( ${this.current.value} ) -> ( ${this.current.nextNode} )`;
+
+        // console.log(`${this.current.value}-->${this.current.nextNode}`);
         console.log(`Num nodes: ${this.length}`);
+        console.log(linkedListString);
     }
 }
 
@@ -45,8 +51,6 @@ myList.append('DouDou');
 myList.append('Mean Cat');
 myList.prepend('John');
 
-myList.printList();
-
-
+myList.toString();
 
 
