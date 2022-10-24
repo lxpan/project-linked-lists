@@ -56,6 +56,16 @@ class LinkedList {
         }
     }
 
+    // removes and returns the last element from the list
+    pop() {
+        const lastNode = this.tail;
+        const secondToLastNode = this.at(this.size - 1);
+        
+        secondToLastNode.nextNode = null;
+        this.tail = secondToLastNode;
+        return lastNode;
+    }
+
     // string representation of linked list
     toString() {
         let current = this.head;
@@ -76,10 +86,11 @@ class LinkedList {
 const myList = new LinkedList();
 myList.append('DouDou');
 myList.append('Mean Cat');
-// myList.prepend('John');
+myList.prepend('John');
 myList.append('LastNode')
 // myList.toString();
-console.log(myList.at(2));
+// console.log(myList.at(2));
+console.log(myList.pop());
 myList.toString();
 // console.log(myList.size);
 // console.log(myList.head);
