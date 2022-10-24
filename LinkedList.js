@@ -1,6 +1,5 @@
 import NodeFactory from './Node.js';
 
-
 class LinkedList {
     constructor() {
         this.head = null; // this should be a pointer to the first node.
@@ -13,14 +12,13 @@ class LinkedList {
         while (current !== undefined) {
             // result = current;
             if (current !== null) {
-                yield current;   
-                current = current.nextNode; 
+                yield current;
+                current = current.nextNode;
             } else {
                 yield null;
                 return;
             }
-            
-        }   
+        }
     }
 
     append(value) {
@@ -66,7 +64,7 @@ class LinkedList {
     pop() {
         const lastNode = this.tail;
         const secondToLastNode = this.at(this.size - 1);
-        
+
         secondToLastNode.nextNode = null;
         this.tail = secondToLastNode;
         this.size -= 1;
@@ -101,7 +99,7 @@ class LinkedList {
         let linkedListString = '';
 
         for (const node of this) {
-            linkedListString += (node == null) ? 'null' : `( ${node.value} ) -> `;
+            linkedListString += node == null ? 'null' : `( ${node.value} ) -> `;
         }
 
         console.log(linkedListString);
@@ -152,7 +150,7 @@ const myList = new LinkedList();
 myList.append('DouDou');
 myList.append('Mean Cat');
 myList.prepend('John');
-myList.append('LastNode')
+myList.append('LastNode');
 myList.insertAt('FatCatz', 1);
 myList.removeAt(3);
 // console.log(myList.at(3));
