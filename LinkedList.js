@@ -1,10 +1,26 @@
 import NodeFactory from './Node.js';
 
+
 class LinkedList {
     constructor() {
         this.head = null; // this should be a pointer to the first node.
         this.tail = null;
         this.size = 0;
+    }
+
+    *[Symbol.iterator]() {
+        let current = this.head;
+        while (current !== undefined) {
+            // result = current;
+            if (current !== null) {
+                yield current.value;   
+                current = current.nextNode; 
+            } else {
+                yield null;
+                return;
+            }
+            
+        }   
     }
 
     append(value) {
@@ -98,17 +114,12 @@ class LinkedList {
 
     // string representation of linked list
     toString() {
-        let current = this.head;
         let linkedListString = '';
 
-        while(current.nextNode !== null) {
-            linkedListString += `( ${current.value} ) -> `;
-            current = current.nextNode;
+        for (const node of this) {
+            linkedListString += (node == null) ? 'null' : `( ${node} ) -> `;
         }
-        // final node needs to be added
-        const tailString = `( ${current.value} ) -> ${current.nextNode}`;
-        linkedListString += tailString;
-        
+
         console.log(linkedListString);
     }
 }
@@ -122,7 +133,11 @@ myList.append('LastNode')
 // console.log(myList.at(2));
 // console.log(myList.pop());
 myList.toString();
-console.log(myList.find('adasd'));
+// console.log(myList.find('adasd'));
 // console.log(myList.size);
 // console.log(myList.head);
 // console.log(myList.tail);
+
+for (const node of myList) {
+    console.log(node);
+}
