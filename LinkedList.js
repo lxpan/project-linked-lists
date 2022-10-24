@@ -13,7 +13,7 @@ class LinkedList {
         while (current !== undefined) {
             // result = current;
             if (current !== null) {
-                yield current.value;   
+                yield current;   
                 current = current.nextNode; 
             } else {
                 yield null;
@@ -117,7 +117,7 @@ class LinkedList {
         let linkedListString = '';
 
         for (const node of this) {
-            linkedListString += (node == null) ? 'null' : `( ${node} ) -> `;
+            linkedListString += (node == null) ? 'null' : `( ${node.value} ) -> `;
         }
 
         console.log(linkedListString);
@@ -137,7 +137,3 @@ myList.toString();
 // console.log(myList.size);
 // console.log(myList.head);
 // console.log(myList.tail);
-
-for (const node of myList) {
-    console.log(node);
-}
