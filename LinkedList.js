@@ -40,6 +40,22 @@ class LinkedList {
         this.size++;
     }
 
+    // index starts at 1 (head node)
+    at(index) {
+        let current = this.head;
+        let i = 1;
+        
+        // traverse list until tail node is reached
+        while(current !== undefined) {
+            if (i == index) {
+                return current;
+            }
+
+            current = current.nextNode;
+            i += 1;
+        }
+    }
+
     // string representation of linked list
     toString() {
         let current = this.head;
@@ -62,7 +78,9 @@ myList.append('DouDou');
 myList.append('Mean Cat');
 // myList.prepend('John');
 myList.append('LastNode')
+// myList.toString();
+console.log(myList.at(2));
 myList.toString();
-console.log(myList.size);
-console.log(myList.head);
-console.log(myList.tail);
+// console.log(myList.size);
+// console.log(myList.head);
+// console.log(myList.tail);
