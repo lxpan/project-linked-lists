@@ -11,15 +11,10 @@ class LinkedList {
         this.current = this.head;
 
         while(this.current.nextNode !== null) {
-            // console.log(`Value: ${this.current.value}`);
-            // console.log(`Next node: ${this.current.nextNode.value}`);
             this.current = this.current.nextNode;
         }
 
         if (this.current.nextNode == null) {
-            // console.log(`Value: ${this.current.value}`);
-            // console.log(`Next node: ${this.current.nextNode.value}`);
-            // this.current.value = value;
             this.current.nextNode = NodeFactory(value);
             this.length++;
         }
@@ -41,6 +36,7 @@ class LinkedList {
         }
 
         console.log(`${this.current.value}-->${this.current.nextNode}`);
+        console.log(`Num nodes: ${this.length}`);
     }
 }
 
