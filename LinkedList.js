@@ -80,6 +80,22 @@ class LinkedList {
         return false;
     }
 
+    find(value) {
+        let current = this.head;
+        let i = 1;
+        
+        // traverse list until tail node is reached
+        while(current !== null) {
+            if (current.value == value) {
+                return i;
+            }
+            current = current.nextNode;
+            i += 1;
+        }
+        
+        return null;
+    }
+
     // string representation of linked list
     toString() {
         let current = this.head;
@@ -106,7 +122,7 @@ myList.append('LastNode')
 // console.log(myList.at(2));
 // console.log(myList.pop());
 myList.toString();
-console.log(myList.contains(111));
+console.log(myList.find('adasd'));
 // console.log(myList.size);
 // console.log(myList.head);
 // console.log(myList.tail);
