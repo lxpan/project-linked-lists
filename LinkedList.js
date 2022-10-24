@@ -69,6 +69,7 @@ class LinkedList {
         
         secondToLastNode.nextNode = null;
         this.tail = secondToLastNode;
+        this.size -= 1;
         return lastNode;
     }
 
@@ -105,6 +106,46 @@ class LinkedList {
 
         console.log(linkedListString);
     }
+
+    insertAt(value, index) {
+        /* 
+        nodeBeforeIndex -> NewNode -> nodeAtIndex
+        */
+        const nodeAtIndex = this.at(index);
+        const newNode = NodeFactory(value, nodeAtIndex);
+
+        // equivalent to prepending
+        if (index == 1) {
+            this.prepend(value);
+        } else {
+            const nodeBeforeIndex = this.at(index - 1);
+            nodeBeforeIndex.nextNode = newNode;
+            this.size++;
+        }
+    }
+
+    removeAt(index) {
+        // first case: head node
+        if (index == 1) {
+            this.head = this.head.nextNode;
+            this.size -= 1;
+        }
+        // second case: tail node
+        else if (index == this.size) {
+            this.pop();
+        }
+        // third case: node in-between head and tail
+        else {
+            const nodeBeforeIndex = this.at(index - 1);
+            let nodeToDelete = this.at(index);
+            const nodeAfterIndex = this.at(index + 1);
+
+            nodeBeforeIndex.nextNode = nodeAfterIndex;
+            // this allows deleted node to be garbage collected in strict mode
+            nodeToDelete = null;
+            this.size--;
+        }
+    }
 }
 
 const myList = new LinkedList();
@@ -112,9 +153,11 @@ myList.append('DouDou');
 myList.append('Mean Cat');
 myList.prepend('John');
 myList.append('LastNode')
+myList.insertAt('FatCatz', 1);
+myList.removeAt(3);
 // console.log(myList.at(3));
 // console.log(myList.contains('Mean Cat'));
 // console.log(myList.find(null));
 // console.log(myList.pop());
 myList.toString();
-// console.log(myList.size);
+console.log(`List size: ${myList.size}`);
