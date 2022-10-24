@@ -7,21 +7,22 @@ class LinkedList {
     }
 
     append(value) {
+        // Initialise very first created node as the head
         if (this.head == null) {
-            const newNode = NodeFactory(value);
-            this.head = newNode;
+            const firstNode = NodeFactory(value);
+            this.head = firstNode;
+            return;
         }
 
         let current = this.head;
         
+        // traverse linked list until next node pointer is null
         while(current.nextNode !== null) {
             current = current.nextNode;
         }
 
         if (current.nextNode == null) {
-            current.value = value;
             current.nextNode = NodeFactory(value);
-            this.size++;
         }
     }
 
@@ -48,11 +49,8 @@ class LinkedList {
 
 const myList = new LinkedList();
 myList.append('DouDou');
-console.log(myList.size);
 myList.append('Mean Cat');
-console.log(myList.size);
-myList.toString();
-myList.prepend('John');
+// myList.prepend('John');
 myList.append('LastNode')
 myList.toString();
 console.log(myList.size);
