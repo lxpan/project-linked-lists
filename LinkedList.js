@@ -35,8 +35,8 @@ class LinkedList {
 
         for (const node of this) {
             if (node.nextNode == null) {
-                node.nextNode = NodeFactory(value);
-                this.tail = node.nextNode;
+                this.tail = NodeFactory(value);
+                node.nextNode = this.tail;
                 this.size++;
                 return;
             }
@@ -123,11 +123,7 @@ myList.append('DouDou');
 myList.append('Mean Cat');
 myList.prepend('John');
 myList.append('LastNode')
-// myList.toString();
 // console.log(myList.at(2));
 // console.log(myList.pop());
 myList.toString();
-// console.log(myList.find('adasd'));
-// console.log(myList.size);
-// console.log(myList.head);
-// console.log(myList.tail);
+console.log(myList.size);
