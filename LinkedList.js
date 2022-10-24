@@ -2,46 +2,46 @@ import NodeFactory from './Node.js';
 
 class LinkedList {
     constructor() {
-        this.head = NodeFactory('HEAD');
+        this.head = null; // this should be a pointer to the first node.
         this.length = 0;
-        this.current = null;
     }
 
     append(value) {
-        this.current = this.head;
-
-        while(this.current.nextNode !== null) {
-            this.current = this.current.nextNode;
+        if (this.head == null) {
+            const newNode = NodeFactory(value);
+            this.head = newNode;
+            this.length++;
         }
 
-        if (this.current.nextNode == null) {
-            this.current.nextNode = NodeFactory(value);
-            this.length++;
+        let current = this.head;
+        
+        while(current.nextNode !== null) {
+            current = current.nextNode;
+        }
+
+        if (current.nextNode == null) {
+            current.value = value;
+            current.nextNode = NodeFactory(value);
         }
     }
 
     prepend(value) {
-        const newNode = NodeFactory(value, this.head.nextNode);
-        this.head.nextNode = newNode;
+        const newNode = NodeFactory(value, this.head);
+        this.head = newNode;
         this.length++;
     }
 
     toString() {
-        this.current = this.head;
+        let current = this.head;
         let linkedListString = '';
 
-        console.log(this.current);
-
-        while(this.current.nextNode !== null) {
-            linkedListString += `( ${this.current.value} ) -> `;
-            // console.log(`${this.current.value}-->${this.current.nextNode.value}`);
-            this.current = this.current.nextNode;
+        while(current.nextNode !== null) {
+            linkedListString += `( ${current.value} ) -> `;
+            current = current.nextNode;
         }
 
-        linkedListString += `( ${this.current.value} ) -> ${this.current.nextNode}`;
-
-        // console.log(`${this.current.value}-->${this.current.nextNode}`);
-        console.log(`Num nodes: ${this.length}`);
+        linkedListString += `${current.nextNode}`;
+        
         console.log(linkedListString);
     }
 }
@@ -49,8 +49,9 @@ class LinkedList {
 const myList = new LinkedList();
 myList.append('DouDou');
 myList.append('Mean Cat');
+myList.toString();
 myList.prepend('John');
-
 myList.toString();
 
-
+// myList.toString();
+// console.log(myList);
