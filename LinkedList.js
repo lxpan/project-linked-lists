@@ -7,6 +7,7 @@ class LinkedList {
         this.size = 0;
     }
 
+    // default generator for iterating through nodes in this linked list
     * [Symbol.iterator]() {
         let current = this.head;
         while (current !== undefined) {
@@ -21,6 +22,7 @@ class LinkedList {
         }
     }
 
+    // appends a new node with value at end of list
     append(value) {
         // Initialise very first created node as the head
         if (this.head == null) {
@@ -41,7 +43,7 @@ class LinkedList {
         }
     }
 
-    // add new node to start of life
+    // add new node to start of list
     prepend(value) {
         const newNode = NodeFactory(value, this.head);
         this.head = newNode;
@@ -71,8 +73,9 @@ class LinkedList {
         return lastNode;
     }
 
+    // checks if list contains a value
     contains(value) {
-        // traverse list until tail node is reached
+        // traverse list until value is found or tail node is reached
         for (const node of this) {
             if (node !== null && node.value == value) {
                 return true;
@@ -82,6 +85,7 @@ class LinkedList {
         return false;
     }
 
+    // finds a value (if its exists) and returns the index
     find(value) {
         let i = 1;
 
@@ -105,6 +109,7 @@ class LinkedList {
         console.log(linkedListString);
     }
 
+    // inserts a new node at index i
     insertAt(value, index) {
         /*
         nodeBeforeIndex -> NewNode -> nodeAtIndex
@@ -122,6 +127,7 @@ class LinkedList {
         }
     }
 
+    // removes the node at index i
     removeAt(index) {
         // first case: head node
         if (index == 1) {
