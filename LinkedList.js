@@ -42,8 +42,9 @@ class LinkedList {
             linkedListString += `( ${current.value} ) -> `;
             current = current.nextNode;
         }
-
-        linkedListString += `( ${current.value} ) -> ${current.nextNode}`;
+        // final node needs to be added
+        const tailString = `( ${current.value} ) -> ${current.nextNode}`;
+        linkedListString += tailString;
         
         console.log(linkedListString);
     }
