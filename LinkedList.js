@@ -33,19 +33,13 @@ class LinkedList {
             return;
         }
 
-        let current = this.head;
-        
-        // traverse list until tail node is reached
-        while(current.nextNode !== null) {
-            current = current.nextNode;
-        }
-
-        // add new node to tail node
-        if (current.nextNode == null) {
-            const newNode = NodeFactory(value);
-            current.nextNode = newNode;
-            this.tail = current.nextNode;
-            this.size++;
+        for (const node of this) {
+            if (node.nextNode == null) {
+                node.nextNode = NodeFactory(value);
+                this.tail = node.nextNode;
+                this.size++;
+                return;
+            }
         }
     }
 
