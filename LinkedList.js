@@ -7,7 +7,7 @@ class LinkedList {
         this.size = 0;
     }
 
-    *[Symbol.iterator]() {
+    * [Symbol.iterator]() {
         let current = this.head;
         while (current !== undefined) {
             // result = current;
@@ -27,7 +27,7 @@ class LinkedList {
             const firstNode = NodeFactory(value);
             this.head = firstNode;
             this.tail = firstNode;
-            this.size++;
+            this.size += 1;
             return;
         }
 
@@ -35,7 +35,7 @@ class LinkedList {
             if (node.nextNode == null) {
                 this.tail = NodeFactory(value);
                 node.nextNode = this.tail;
-                this.size++;
+                this.size += 1;
                 return;
             }
         }
@@ -45,7 +45,7 @@ class LinkedList {
     prepend(value) {
         const newNode = NodeFactory(value, this.head);
         this.head = newNode;
-        this.size++;
+        this.size += 1;
     }
 
     // index starts at 1 (head node)
@@ -106,7 +106,7 @@ class LinkedList {
     }
 
     insertAt(value, index) {
-        /* 
+        /*
         nodeBeforeIndex -> NewNode -> nodeAtIndex
         */
         const nodeAtIndex = this.at(index);
@@ -118,7 +118,7 @@ class LinkedList {
         } else {
             const nodeBeforeIndex = this.at(index - 1);
             nodeBeforeIndex.nextNode = newNode;
-            this.size++;
+            this.size += 1;
         }
     }
 
@@ -141,7 +141,7 @@ class LinkedList {
             nodeBeforeIndex.nextNode = nodeAfterIndex;
             // this allows deleted node to be garbage collected in strict mode
             nodeToDelete = null;
-            this.size--;
+            this.size -= 1;
         }
     }
 }
@@ -151,7 +151,7 @@ myList.append('DouDou');
 myList.append('Mean Cat');
 myList.prepend('John');
 myList.append('LastNode');
-myList.insertAt('FatCatz', 1);
+myList.insertAt('FatCats', 1);
 myList.removeAt(3);
 // console.log(myList.at(3));
 // console.log(myList.contains('Mean Cat'));
